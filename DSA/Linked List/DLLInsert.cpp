@@ -39,6 +39,21 @@ head->prev=newHead;
 return newHead;
 }
 
+Node* InsertAfterHead(Node* head,int val){
+if(head==NULL){
+    return NULL;
+}
+Node* headNext=head->next;
+Node* newNode=new Node(val,headNext,head);
+head->next=newNode;
+if(newNode!=NULL){
+    headNext->prev=newNode;
+}
+return head;
+}
+
+
+
 Node* InsertBeforeTail(Node* head,int val){
 
     if(head->next==NULL){
@@ -54,6 +69,22 @@ tail->prev=newNode;
 PRev->next=newNode;
 return head;
 }
+
+Node* InsertAfterTail(Node* head, int val){
+Node* tail=head;
+while(tail->next!=NULL){
+    tail=tail->next;
+
+
+}
+Node* newNode=new Node(val,nullptr,tail);
+    tail->next=newNode;
+    newNode->next=nullptr;
+    return head;
+
+
+}
+
 
 Node* InsertBeforKth(Node* head,int k,int val){
      if(k==1){
@@ -93,7 +124,9 @@ int main() {
     Node* head = convert2DLL(arr, n);
     //head=InsertBeforeHead(head,val);
     //head=InsertBeforeTail(head,val);
-    head=InsertBeforKth(head,k,val);
+    //head=InsertBeforKth(head,k,val);
+    //head=InsertAfterHead(head,val);
+    head=InsertAfterTail(head,val);
     print(head);
     return 0;
 
